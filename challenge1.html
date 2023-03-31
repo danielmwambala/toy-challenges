@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge 1</title>
+  </head>
+  <body>
+    <div id="">
+      <input id="input" type="number" min="0" max="100" />
+      <button onclick="{getGrade()}" id="btn">Show grade</button>
+      <div style="color: green" id="displayGrade"></div>
+      <div style="color: red" id="displayError"></div>
+    </div>
+  </body>
+  <script>
+    let getGrade = () => {
+      const value = Number(document.getElementById("input").value);
+      document.getElementById("displayError").innerText = "";
+      document.getElementById("displayGrade").innerText = "";
+      if (value) {
+        if (value < 1) {
+          document.getElementById("displayError").innerText =
+            "Please enter a grade whos value is greater than 0";
+        } else if (value > 100) {
+          document.getElementById("displayError").innerText =
+            "Please enter a grade whos value is less than 100";
+        } else {
+          document.getElementById("displayError").innerText = "";
+          let grade;
+
+          switch (true) {
+            case value > 79:
+              grade = "A";
+              break;
+
+            case value >= 60 && value <= 79:
+              grade = "B";
+              break;
+
+            case value >= 49 && value <= 59:
+              grade = "C";
+              break;
+
+            case value >= 40 && value <= 48:
+              grade = "D";
+              break;
+
+            case value < 40:
+              grade = "E";
+              break;
+
+            default:
+              grade = "Undefined";
+              break;
+          }
+          //   display grade
+          document.getElementById("displayGrade").innerText =
+            "Your grade is " + grade;
+        }
+      } else {
+        document.getElementById("displayError").innerText =
+          "Please enter a grade.";
+      }
+    };
+  </script>
+</html>
